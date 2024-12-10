@@ -142,3 +142,24 @@ Para melhorar ainda mais os resultados ou tirar insights mais aprofundados:
 - Testar outros valores de K *(K=5 ou K=15)* para ver como isso impacta a performance.
 - Experimentar outras métricas de distância, como Manhattan ou Minkowski.
 - Realizar uma análise mais detalhada das classes para entender por que uma métrica se sai melhor que a outra.
+
+### 5. Interpretação dos Gráficos
+
+#### a. Distribuição das Classes
+O gráfico de distribuição das classes apresenta a quantidade de ocorrências para cada classe nos dados. É possível observar que algumas classes possuem uma frequência consideravelmente maior do que outras. Por exemplo, a classe `300000034` é uma das mais frequentes, enquanto a classe `100192430` apresenta menos ocorrências. Esse desbalanceamento pode impactar o desempenho do modelo, já que classes menos representadas tendem a ser preditas com menor precisão. Estratégias como reamostragem, atribuição de pesos às classes ou aumento de dados podem ser consideradas para lidar com essa questão.
+
+![Figure_1](Figure_1.png)
+
+#### b. Visualização t-SNE
+O gráfico t-SNE é uma redução de dimensionalidade que transforma dados de alta dimensionalidade em um espaço bidimensional, permitindo a visualização da separação entre as classes. No gráfico, cada ponto representa uma instância, colorida de acordo com sua classe. Observa-se que as classes formam grupos visíveis, indicando que os dados possuem padrões bem definidos que ajudam o modelo a diferenciar as classes. No entanto, algumas sobreposições entre grupos podem indicar a necessidade de ajustes nos dados ou no modelo.
+
+![Figure_1](Figure_3.png)
+
+#### c. Curvas ROC
+As curvas ROC (Receiver Operating Characteristic) medem o desempenho do modelo em separar corretamente cada classe. Cada curva está associada a uma métrica AUC (Área Sob a Curva), que varia entre 0 e 1. Valores mais próximos de 1 indicam alta capacidade de separação para a classe correspondente. No gráfico, classes como `300000034` possuem uma AUC elevada, enquanto outras, como `700018215`, têm valores mais baixos, sugerindo que o modelo enfrenta dificuldades para distinguir essas classes. Esse gráfico é fundamental para avaliar o desempenho individual de cada classe e identificar onde melhorias podem ser necessárias.
+
+![Figure_1](Figure_4.png)
+
+#### d. Matriz de Confusão
+A matriz de confusão exibe as classificações corretas e incorretas do modelo para cada classe. Os valores na diagonal principal representam as predições corretas, enquanto os valores fora da diagonal mostram as confusões entre classes. Por exemplo, o modelo pode confundir a classe `300000034` com a classe `300000018`, o que pode indicar similaridades nos padrões dessas classes. Analisar as confusões ajuda a identificar possíveis ajustes no modelo ou nos dados, como maior distinção entre as características das classes ou ajustes nos parâmetros de treinamento.
+![Figure_1](Figure_5.png)
