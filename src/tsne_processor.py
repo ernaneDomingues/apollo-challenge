@@ -1,6 +1,7 @@
 import numpy as np
 from sklearn.manifold import TSNE
 
+
 def prepare_embeddings(data):
     """Prepara os embeddings e metadados a partir do dicionário de dados."""
     all_embeddings = []
@@ -18,7 +19,10 @@ def prepare_embeddings(data):
 
     return np.array(all_embeddings), labels, subject_ids, image_ids
 
+
 def compute_tsne(embeddings, n_components=2, perplexity=30, random_state=42):
     """Computa a redução de dimensionalidade com t-SNE."""
-    tsne = TSNE(n_components=n_components, perplexity=perplexity, random_state=random_state)
+    tsne = TSNE(
+        n_components=n_components, perplexity=perplexity, random_state=random_state
+    )
     return tsne.fit_transform(embeddings)

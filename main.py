@@ -5,7 +5,7 @@ from src.similarity_metrics import (
     calculate_cosine_similarity,
     calculate_euclidean_similarity,
 )
-from src.evaluation_metrics import calculate_auc_ovr, calculate_accuracy
+from src.evaluation_metrics import calculate_auc_ovr, calculate_accuracy, evaluate_models
 from src.results_saving import create_results_table
 from src.data_visualization import (
     plot_class_distribution,
@@ -28,10 +28,10 @@ def main():
     # Visualizações de pré-processamento
     plot_class_distribution(y, label_encoder)
     plot_sample_images(X, y, label_encoder, n_samples=5)
-    
-    all_embeddings, labels, _, _ = prepare_embeddings(data)    
+
+    all_embeddings, labels, _, _ = prepare_embeddings(data)
     embeddings_2d = compute_tsne(all_embeddings)
-    
+
     plot_tsne(embeddings_2d, labels, title="t-SNE Visualization of Embeddings")
 
     # Dividir os dados em treinamento e teste
@@ -49,7 +49,6 @@ def main():
     )
 
     # plot_cluster_comparison(X, cosine_predictions_proba, euclidean_predictions_proba)
-
 
     # Avaliar métricas
     num_labels = len(np.unique(y))

@@ -30,3 +30,4 @@ def get_top_k_predictions(similarities, y_train, k):
         predictions.append(probabilities / k)  # Normaliza para obter probabilidades
 
     return np.array(predictions)
+
