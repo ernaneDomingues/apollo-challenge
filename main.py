@@ -18,6 +18,7 @@ from src.tsne_processor import prepare_embeddings, compute_tsne
 
 
 FILE_PATH = "mini_gm_public_v0.1.p"
+K_INDEX = 10
 
 
 def main():
@@ -41,11 +42,11 @@ def main():
 
     # Calcular similaridades
     cosine_predictions_proba = calculate_cosine_similarity(
-        X_train, X_test, y_train, k=5
+        X_train, X_test, y_train, k=K_INDEX
     )
 
     euclidean_predictions_proba = calculate_euclidean_similarity(
-        X_train, X_test, y_train, k=5
+        X_train, X_test, y_train, k=K_INDEX
     )
 
     # plot_cluster_comparison(X, cosine_predictions_proba, euclidean_predictions_proba)
@@ -60,9 +61,9 @@ def main():
 
     # Criar tabela de resultados
     results = [
-        {"K": 5, "Distance": "Cosine", "Accuracy": accuracy_cosine, "AUC": auc_cosine},
+        {"K": K_INDEX, "Distance": "Cosine", "Accuracy": accuracy_cosine, "AUC": auc_cosine},
         {
-            "K": 5,
+            "K":K_INDEX,
             "Distance": "Euclidean",
             "Accuracy": accuracy_euclidean,
             "AUC": auc_euclidean,
